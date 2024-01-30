@@ -1,7 +1,50 @@
 #include <iostream>
-#include <cstdlib>	//c standard library - ex. sqaure root(sqrt)
+//#include <cstdlib> //ref:C# static_cast	//c standard library - ex. sqaure root(sqrt)
 using std::cout;
 using std::endl;
+
+//----------------------- C++ typeid() -------------------------------------------------------------
+//ref link:https://www.youtube.com/watch?v=TFwW36dLoHY&list=PLRwVmtr-pp05motkiTlDIuU5ZfoRr-kWC&index=7
+
+class Base {};
+class Derived1 : public Base {};
+class Derived2 : public Base {};
+
+void main()
+{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //------------------------ C++ static_cast ---------------------------------------------------------
 //ref link:https://www.youtube.com/watch?v=M4y5KnnlDhE&list=PLRwVmtr-pp05motkiTlDIuU5ZfoRr-kWC&index=3
