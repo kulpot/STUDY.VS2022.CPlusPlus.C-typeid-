@@ -6,13 +6,16 @@ using std::endl;
 //----------------------- C++ typeid() -------------------------------------------------------------
 //ref link:https://www.youtube.com/watch?v=TFwW36dLoHY&list=PLRwVmtr-pp05motkiTlDIuU5ZfoRr-kWC&index=7
 
+//typeid - one of runtime type identification constructs
+
 class Base {};
 class Derived1 : public Base {};
 class Derived2 : public Base {};
 
 void main()
 {
-
+	cout << typeid(Base).name() << endl;
+	cout << typeid(Derived1).name() << endl;
 }
 
 
