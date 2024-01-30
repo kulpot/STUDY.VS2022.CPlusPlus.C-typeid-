@@ -19,14 +19,21 @@ Typeid return a constant typeinfo reference(&)
 const tipeinfo& t = typeid(Base);
 */
 
-class Base {};
+//class Base {};		// no polymorphism
+class Base	// with polymorphism
+{
+	virtual void f() {};
+};
 class Derived1 : public Base {};
 class Derived2 : public Base {};
 
 void main()
 {
-	cout << typeid(Base).name() << endl;
-	cout << typeid(Derived1).name() << endl;
+	Base* b = new Derived1;
+	cout << typeid(*b).name() << endl;	//*b - redereference
+
+	//cout << typeid(Base).name() << endl;
+	//cout << typeid(Derived1).name() << endl;
 }
 
 
