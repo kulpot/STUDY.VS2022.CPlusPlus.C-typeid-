@@ -1,13 +1,17 @@
 #include <iostream>
-//#include <cstdlib> //ref:C# static_cast	//c standard library - ex. sqaure root(sqrt)
+#include <typeinfo>		//ref:C++ typeid()
+#include <time.h>		//ref C++ typeid() // srand(time(0)); -> every random type has to start with a number
+//#include <cstdlib> //ref:C++ static_cast	//c standard library - ex. sqaure root(sqrt)
 using std::cout;
 using std::endl;
 
 //----------------------- C++ typeid() -------------------------------------------------------------
 //ref link:https://www.youtube.com/watch?v=TFwW36dLoHY&list=PLRwVmtr-pp05motkiTlDIuU5ZfoRr-kWC&index=7
 
-//typeid - one of runtime type identification constructs
+//typeid - one of runtime type identification constructs requires polymorphism(vTable)
 //typeid - can be useful in debugging tool if you have a compileTimeType pointer of basetype pointed to a derived so you get the runtime type out
+//the compiler creates one typeinfo instance per type(static instance per every type in the program)
+
 //typeid Stores information about a type. It allows you to compare types of objects(==,!=), get their hash code or get their name
 // In this sample the.name() fct is used.
 /*
@@ -19,6 +23,8 @@ Typeid return a constant typeinfo reference(&)
 const tipeinfo& t = typeid(Base);
 */
 
+
+
 //class Base {};		// no polymorphism
 class Base	// with polymorphism
 {
@@ -29,8 +35,26 @@ class Derived2 : public Base {};
 
 void main()
 {
-	Base* b = new Derived1;
-	cout << typeid(*b).name() << endl;	//*b - redereference
+	//Base* b =										new Derived2;  // determined by runtime
+	//####random boolean#### return static_cast<Base*>#######
+	srand(time(0));					//seedrandom
+	Base* b =
+		(rand() % 2 == 0) ? static_cast<Base*>(new Derived1) : new Derived2;
+	if (typeid(*b) == typeid(Derived1))
+	{
+		//van static casting
+		cout << "Derived1" << endl;
+	}
+	else if (typeid(*b) == typeid(Derived2))
+	{
+		cout << "Derived2" << endl;
+	}
+
+	//const type_info& t = typeid(Base);
+	//cout << t.name() << endl;
+
+	//Base* b = new Derived1;
+	//cout << typeid(*b).name() << endl;	//*b - redereference
 
 	//cout << typeid(Base).name() << endl;
 	//cout << typeid(Derived1).name() << endl;
