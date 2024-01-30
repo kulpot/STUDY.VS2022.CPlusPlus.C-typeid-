@@ -7,6 +7,17 @@ using std::endl;
 //ref link:https://www.youtube.com/watch?v=TFwW36dLoHY&list=PLRwVmtr-pp05motkiTlDIuU5ZfoRr-kWC&index=7
 
 //typeid - one of runtime type identification constructs
+//typeid - can be useful in debugging tool if you have a compileTimeType pointer of basetype pointed to a derived so you get the runtime type out
+//typeid Stores information about a type. It allows you to compare types of objects(==,!=), get their hash code or get their name
+// In this sample the.name() fct is used.
+/*
+Base b = new Derived1;
+typeid(b).name() => Base. If there are no virtual function(so no virtual table in the base object)
+typeid(b).name() => Derived1. If there exists a virtual function(the vTable will point to the derived object)
+
+Typeid return a constant typeinfo reference(&)
+const tipeinfo& t = typeid(Base);
+*/
 
 class Base {};
 class Derived1 : public Base {};
